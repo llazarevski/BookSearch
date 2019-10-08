@@ -26,7 +26,6 @@ class App extends React.Component{
         `${encodeURIComponent(key)}=${encodeURIComponent(bookItems[key])}`
       );
       return bookItems.join("&");
-      console.log(bookItems);
     };
     const booksearchurl = url + getParams(params);
     console.log(booksearchurl);
@@ -54,12 +53,17 @@ class App extends React.Component{
         });
       });
   }
+  showBookDetails(show) {
+    this.setState({
+      showBookDetails: show
+    });
+  }
   render(){
       const page = this.state.showBookDetails
       ? <Book />
       : <div className ='bodycontainer'>
           <SearchHeader />
-          <BookList books= {this.state.books}/>
+          <BookList books= {this.state.books} showBookDetails={show => this.setShowBookDetails(show)}/>
         </div>
   
   return (

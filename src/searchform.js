@@ -1,16 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './searchform.css';
 
-export default function SearchForm(props){
+class SearchForm extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+          search: "",
+        };
+      }
+      searchChanged(search) {
+        this.setState({
+          search
+        });
+      }
+    render(){
+
+    
     return(
         <div className='searchForm'>
-            <form>
+            <form className='searchForm' >
             <label for='search'>Search:</label>
-            <input type="text" name="search" id='search'/>
+            <input type="text" name="search" id='search' onChange={e => this.searchChanged(e.target.value)}/>/>
             <button type="submit" >Submit</button>
             </form>
         </div>
     );
 
 };
+};
 
+export default SearchForm;

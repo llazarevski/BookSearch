@@ -4,13 +4,14 @@ import BookItem from './bookitem';
 
 class BookList extends Component {
   render() {
-    const bookitems = this
+    const books = this
           .props
-          .bookitem
-          .map((bookitems, i) => <BookItem { ...bookitems } key={i}/>);
+          .books
+          .map((bookitem, i) => <BookItem { ...bookitem } key={i} showBookDetails={this.props.showBookDetails}/>);
+          console.log(books)
     return (
       <div className="booklist">
-        {bookitems}
+        {books}
       </div>
     );
   }
