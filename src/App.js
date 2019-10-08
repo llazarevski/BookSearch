@@ -16,7 +16,7 @@ class App extends React.Component{
   componentDidMount(){
     const url = 'https://www.googleapis.com/books/v1/volumes?';
     let params = {
-      q: [],
+      q: {this.props.search},
       key: 'AIzaSyDlsn3GHt3LSATXhaCSeSoXV0rPhTPf6jc'
     };
 
@@ -62,7 +62,7 @@ class App extends React.Component{
       const page = this.state.showBookDetails
       ? <Book />
       : <div className ='bodycontainer'>
-          <SearchHeader />
+          <SearchHeader search={this.props.search}/>
           <BookList books= {this.state.books} showBookDetails={show => this.setShowBookDetails(show)}/>
         </div>
   

@@ -20,7 +20,7 @@ class SearchForm extends React.Component{
         <div className='searchForm'>
             <form className='searchForm' >
             <label for='search'>Search:</label>
-            <input type="text" name="search" id='search' onChange={e => this.searchChanged(e.target.value)}/>/>
+            <input type="text" name="search" id='search' value={this.props.search} onChange={e => this.searchChanged(e.target.value)}/>
             <button type="submit" >Submit</button>
             </form>
         </div>
