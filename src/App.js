@@ -4,6 +4,22 @@ import SearchHeader from './searchheader';
 import BookList from './booklist';
 import Book from './book';
 
+const url = 'https://www.googleapis.com/books/v1/volumes?';
+    let params = {
+      q: {search},
+      key: 'AIzaSyDlsn3GHt3LSATXhaCSeSoXV0rPhTPf6jc'
+    };
+
+function getParams(params) {
+  const bookItems = Object.keys(params).map(
+    key =>
+    `${encodeURIComponent(key)}=${encodeURIComponent(bookItems[key])}`
+  );
+  return bookItems.join("&");
+};
+const booksearchurl = url + getParams(params);
+console.log(booksearchurl);
+
 class App extends React.Component{
   constructor(props){
     super(props);
@@ -12,23 +28,8 @@ class App extends React.Component{
       showBookDetails: false
     };
   }
-
+  
   componentDidMount(){
-    const url = 'https://www.googleapis.com/books/v1/volumes?';
-    let params = {
-      q: {this.props.search},
-      key: 'AIzaSyDlsn3GHt3LSATXhaCSeSoXV0rPhTPf6jc'
-    };
-
-    function getParams(params) {
-      const bookItems = Object.keys(params).map(
-        key =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(bookItems[key])}`
-      );
-      return bookItems.join("&");
-    };
-    const booksearchurl = url + getParams(params);
-    console.log(booksearchurl);
     const options ={
       method: 'GET',
     };
