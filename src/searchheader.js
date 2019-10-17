@@ -7,7 +7,7 @@ class SearchHeader extends React.Component{
     render(){
         return(
             <div className='searchheader'>
-            <SearchForm search={this.props.search}/>
+            <SearchForm booksSearchResults ={this.props.booksSearchResults}/>
             <Filters />
             </div>
         )

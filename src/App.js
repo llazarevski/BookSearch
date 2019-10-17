@@ -13,7 +13,7 @@ const url = 'https://www.googleapis.com/books/v1/volumes?';
 function getParams(params) {
   const bookItems = Object.keys(params).map(
     key =>
-    `${encodeURIComponent(key)}=${encodeURIComponent(bookItems[key])}`
+    `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
   );
   return bookItems.join("&");
 };
@@ -59,11 +59,19 @@ class App extends React.Component{
       showBookDetails: show
     });
   }
+
+  booksSearchResults(search){
+    this.setState({
+      books: [...this.state.books, books], 
+      showBookDetails: false
+    });
+  }
+
   render(){
       const page = this.state.showBookDetails
       ? <Book />
       : <div className ='bodycontainer'>
-          <SearchHeader search={this.props.search}/>
+          <SearchHeader booksSearchResults = {books => this.booksSearchResults(search)} search={this.props.search}/>
           <BookList books= {this.state.books} showBookDetails={show => this.setShowBookDetails(show)}/>
         </div>
   
