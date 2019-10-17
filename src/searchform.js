@@ -10,7 +10,7 @@ class SearchForm extends React.Component{
       }
       searchChanged(search) {
         this.setState({
-          search: search
+          search
         });
       }
 
